@@ -1,0 +1,38 @@
+# Copyright (C) TerseMind.
+# Use of this source code is governed by a MIT license.
+
+# 自动把 demo adapter 上传到 HuggingFace Hub
+# 前置：repo Settings → Secrets and variables → Actions → HF_TOKEN（Write 权限）
+# 触发：Actions 页 workflow_dispatch 手动运行（或 API 触发）
+name: upload-demo-adapters-to-hf
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - name: Install tools
+        run: pip install -q huggingface_hub
+
+      - name: Diagnose HF identity
+        run: |
+          hf auth whoami || true
+          echo "---orgs---"
+          hf auth whoami --show-orgs || true
+
+      - name: Download release bundle
+        run: |
+          curl -sL -o bundle.zip \
+            https://github.com/tersemind/mini-engram/releases/download/v0.1.1/engram_release_bundle.zip
+          unzip -q -o bundle.zip -d bundle
+          ls bundle/adapters
+
+      - name: Upload xinglan adapter (card included)
+        run: hf upload kegokang/mini-engram-xinglan bundle/adapters/xinglan .
+
+      - name: Upload hanhai adapter (card included)
+        run: hf upload kegokang/mini-engram-hanhai bundle/adapters/hanhai .

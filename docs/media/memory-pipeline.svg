@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="710" viewBox="0 0 1320 710" role="img" aria-labelledby="title desc">
+  <title id="title">mini-engram: from documents to parametric memory</title>
+  <desc id="desc">Ingest tenant documents, synthesize a self-study QA set, bake a LoRA adapter and serve with one base model hosting multiple adapters. Compare closed-book memory with base, full-context and BM25-RAG conditions on task-specific benchmarks.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect x="1" y="1" width="1318" height="708" rx="22" fill="#fff" stroke="#dbe4ef" stroke-width="2"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="48" y="54" font-size="17" font-weight="700" letter-spacing="2" fill="#0f766e">FROM CORPUS TO MEMORY</text>
+    <text x="48" y="103" font-size="34" font-weight="700" fill="#0f172a">Knowledge moves offline. Answers stay closed-book.</text>
+    <text x="48" y="139" font-size="21" fill="#64748b">Self-study data + per-tenant LoRA + one shared base model</text>
+
+    <rect x="48" y="186" width="280" height="218" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="70" y="222" font-size="17" font-weight="700" fill="#2563eb">01 / INGEST</text>
+    <text x="70" y="260" font-size="25" font-weight="700" fill="#0f172a">Read the corpus</text>
+    <text x="70" y="299" font-size="20" fill="#475569">Documents or Git repo</text>
+    <text x="70" y="331" font-size="20" fill="#475569">Keep source references</text>
+    <text x="70" y="378" font-size="18" fill="#2563eb">engram/ingest.py</text>
+
+    <rect x="362" y="186" width="280" height="218" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="384" y="222" font-size="17" font-weight="700" fill="#2563eb">02 / SELF-STUDY</text>
+    <text x="384" y="260" font-size="25" font-weight="700" fill="#0f172a">Build a study set</text>
+    <text x="384" y="299" font-size="20" fill="#475569">Generate corpus QA</text>
+    <text x="384" y="331" font-size="20" fill="#475569">Facts and relationships</text>
+    <text x="384" y="378" font-size="18" fill="#2563eb">engram/synth.py</text>
+
+    <rect x="676" y="186" width="280" height="218" rx="14" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="698" y="222" font-size="17" font-weight="700" fill="#0f766e">03 / BAKE</text>
+    <text x="698" y="260" font-size="25" font-weight="700" fill="#0f172a">Bake an adapter</text>
+    <text x="698" y="299" font-size="20" fill="#475569">Per-tenant LoRA training</text>
+    <text x="698" y="331" font-size="20" fill="#475569">Knowledge in parameters</text>
+    <text x="698" y="378" font-size="18" fill="#0f766e">engram/train_lora.py</text>
+
+    <rect x="990" y="186" width="282" height="218" rx="14" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="1012" y="222" font-size="17" font-weight="700" fill="#a16207">04 / SERVE</text>
+    <text x="1012" y="260" font-size="25" font-weight="700" fill="#0f172a">Select a tenant</text>
+    <text x="1012" y="299" font-size="20" fill="#475569">One Qwen2.5-7B base</text>
+    <rect x="1012" y="317" width="108" height="29" rx="7" fill="#fef3c7"/>
+    <rect x="1130" y="317" width="108" height="29" rx="7" fill="#fef3c7"/>
+    <text x="1066" y="337" text-anchor="middle" font-size="17" fill="#854d0e">Xinglan</text>
+    <text x="1184" y="337" text-anchor="middle" font-size="17" fill="#854d0e">Hanhai</text>
+    <text x="1012" y="378" font-size="18" fill="#a16207">scripts/serve.sh + HF adapters</text>
+
+    <g fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M330 293 H357"/><path d="M644 293 H671"/><path d="M958 293 H985"/>
+    </g>
+
+    <rect x="48" y="450" width="1224" height="202" rx="16" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="72" y="486" font-size="16" font-weight="700" letter-spacing="1.5" fill="#64748b">COMPARE UNDER EACH STUDY'S PROTOCOL</text>
+    <text x="72" y="529" font-size="24" font-weight="700" fill="#0f172a">Four conditions</text>
+    <text x="72" y="566" font-size="20" fill="#475569">Base · full context</text>
+    <text x="72" y="598" font-size="20" fill="#475569">BM25-RAG · baked LoRA</text>
+    <path d="M367 553 H403" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="434" y="529" font-size="24" font-weight="700" fill="#0f172a">Task-specific evidence</text>
+    <text x="434" y="566" font-size="20" fill="#475569">Synthetic wikis · LoCoMo</text>
+    <text x="434" y="598" font-size="20" fill="#475569">LongHealth · LongMemEval-S*</text>
+    <path d="M797 553 H833" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="864" y="529" font-size="24" font-weight="700" fill="#0f766e">Identify the trade-offs</text>
+    <text x="864" y="566" font-size="20" fill="#475569">Recall · refusal · discrimination</text>
+    <text x="864" y="598" font-size="20" fill="#475569">Preserve gains and failure cases</text>
+    <text x="72" y="631" font-size="16" fill="#64748b">* LongMemEval-S is a separate 50-question extension; public HF adapters cover the fictional-wiki demos.</text>
+    <text x="48" y="686" font-size="16" fill="#64748b">mini-engram / TerseMind</text>
+  </g>
+</svg>
